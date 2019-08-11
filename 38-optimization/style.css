@@ -1,0 +1,36 @@
+body {
+  background: yellow;
+}
+
+h1 {
+  color: red;
+}
+
+.image__puppy {
+  height: 200px;
+}
+
+@media screen and (min-width: 900px) {
+  body {
+    background: url('./large-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  body {
+    background: url('./medium-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width: 334px) {
+  body {
+    background: url('./small-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+}
+
+h1 {
+  color: red;
+}
