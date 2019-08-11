@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Critical Render Path</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- %5 download in the background and not disrupt the page load if screen doesn't match -->
+  <link rel="stylesheet" href="./style2.css" media="only screen and (min-width:500px)">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="./style.css" media="all">
+
+  <!-- Internal CSS - pro: Allows u to not have to request CSS file -->
+  <!-- Con: creates manual work to put on multiple pages -->
+  <!-- Con: not minifiable with pre-processors -->
+  <style>
+    h1 {
+      color: green;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- Inline CSS -->
+  <h1 style="background-color: yellow">How fast?</h1>
+  <button>Click Me</button>
+
+  <!-- Above the fold loading -->
+  <h2 class="important">
+    Important above the fold content.
+  </h2>
+
+  <h2 class="secondary">
+    Below the fold content. You won't see this until after page loads.
+  </h2>
+
+
+  <!-- #2 Render blocking and Parser blocking JS -->
+  <!-- <script>alert('check')</script> -->
+
+  <script type="text/javascript">
+    const loadStyleSheet = (attr) => {
+      console.log('function loadStyleSheet called ... ')
+      if (document.createStylesheet) {
+        document.createStylesheet(src)
+      } else {
+        const stylesheet = document.createElement('link');
+        stylesheet.href = attr.src;
+        stylesheet.type = attr.type;
+        stylesheet.rel = attr.rel;
+        document.getElementsByTagName('head')[0].appendChild(stylesheet)
+      }
+    }
+
+    window.onload = function () {
+      const attributes = {
+        src: './style3.css',
+        type: 'text/css',
+        rel: 'stylesheet'
+      }
+
+      console.log('window onload ...');
+      loadStyleSheet(attributes)
+    }
+  </script>
+</body>
+
+</html>

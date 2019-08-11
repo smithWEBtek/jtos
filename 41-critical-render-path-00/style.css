@@ -1,0 +1,9 @@
+.important {
+  background: yellow;
+}
+
+@media  (max-width: 499px){
+  h1 {
+    color: red;
+  }
+}

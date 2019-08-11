@@ -1,0 +1,13 @@
+h1 {
+  color: blue;
+}
+
+/* bad rendering specificity */
+.header .nav .item .link a.important {
+  color: pink;
+}
+
+/* good rendering specificity */
+a.important {
+  color: pink;
+}
