@@ -34,17 +34,19 @@
   }
 }
 
-.pets {
+.people {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
 
-.pet {
+.person {
   border: 2px dashed gray;
+  border-radius: 25px;
   grid-auto-flow: column;
+  margin: 15px;
   width: auto;
 }
 
-.pet > img {
+.person > img {
   width: auto;
 }

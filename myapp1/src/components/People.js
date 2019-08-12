@@ -1,16 +1,16 @@
 import React from 'react';
-import HelloMessage from './HelloMessage';
+import Person from './Person';
 
 class People extends React.Component {
   render() {
     const peopleList = this.props.names.map((element, index, arr) => {
       return (
-        <HelloMessage key={index} name={element.name} color={element.color} />
+        <Person key={index} name={element.name} color={element.color} />
       )
     })
 
     return (
-      <div className="pets">
+      <div className="people">
         {peopleList}
       </div>
     )
