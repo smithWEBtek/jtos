@@ -29,7 +29,7 @@ class Board extends React.Component {
 
     console.log('turnCount: ', turnCount);
     // console.log('squares: ', squares);
-    // console.log('state before: ', this.state.squares);
+    console.log('state before: ', this.state.squares);
 
     turnCount % 2 !== 0 && squares[i] === null ? squares[i] = "X" : squares[i] = "O"
     this.setState({ squares: squares })
