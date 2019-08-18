@@ -39,9 +39,13 @@ class Game extends React.Component {
     });
   }
 
+  onClickMove = (id) => {
+    Array.from(document.getElementsByTagName('li')).forEach(l => l.firstChild.classList.remove('selected'))
+    document.getElementsByTagName('li')[id].firstChild.classList.add('selected')
+  }
+
   render() {
     const history = this.state.history;
-    // const current = history[history.length - 1];
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
@@ -50,9 +54,12 @@ class Game extends React.Component {
         'Go to move #' + move :
         'Go to game start';
       return (
-        <li key={move}>
+        <li
+          key={move}
+          id={move}
+          onClick={() => this.onClickMove(move)}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
+        </li >
       );
     });
 

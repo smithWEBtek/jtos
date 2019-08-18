@@ -3,7 +3,8 @@ body {
   margin: 20px;
 }
 
-ol, ul {
+ol,
+ul {
   padding-left: 30px;
 }
 
@@ -57,4 +58,9 @@ ol, ul {
 .green {
   background-color: rgb(7, 88, 14);
   color: #fff;
+}
+
+.selected {
+  font-weight: bold;
+  background-color: rgb(150, 144, 144);
 }
