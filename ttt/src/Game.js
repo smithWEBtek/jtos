@@ -64,7 +64,8 @@ class Game extends React.Component {
 
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = <p className="green">Winner: {winner[0]}</p>;
+      highlightWinningSquares(winner[1])
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
@@ -104,8 +105,14 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return [squares[a], lines[i]];
     }
   }
   return null;
+}
+
+function highlightWinningSquares(arr) {
+  arr.forEach(sq => {
+    document.querySelectorAll('button')[sq].classList.add('green')
+  })
 }
