@@ -1,6 +1,6 @@
 import React from 'react';
 import Board from './Board';
-import './index.css';
+import './index.scss';
 
 class Game extends React.Component {
   constructor(props) {
@@ -29,7 +29,6 @@ class Game extends React.Component {
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
     });
-    console.log('state: ', this.state);
   }
 
   jumpTo(step) {
@@ -72,18 +71,19 @@ class Game extends React.Component {
 
     return (
       <div className="game">
-        <div className="game-board">
-          <h1>Tic Tac Toe</h1>
-          <Board
-            squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
-          />
-        </div>
-        <div className="game-info">
-          <div>{status}</div>
-          <ol>{moves}</ol>
-        </div>
-      </div>
+        <div className="game__title">Tic Tac Toe</div>
+        <Board
+          class="game__board"
+          squares={current.squares}
+          onClick={(i) => this.handleClick(i)}
+        />
+        <div className="game__status">
+          <div className="game__status--message">{status}</div>
+          <div className="game__status--moves">
+            <ul>{moves}</ul>
+          </div>
+        </div >
+      </div >
     );
   }
 }
