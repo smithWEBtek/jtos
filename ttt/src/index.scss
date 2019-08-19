@@ -41,11 +41,22 @@ body {
   width: 250px;
 
   &__title {
-    background-color: rgb(100, 100, 151);
+    background-color: rgb(57, 57, 74);
     border-radius: 10px;
-    color: rgb(192, 177, 177);
+    color: rgb(247, 243, 243);
     padding: 5px 10px;
     margin-top: 0;
+
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    :hover {
+      color: rgb(34, 255, 0);
+    }
+
   }
 
   &__board {
