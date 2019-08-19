@@ -36,6 +36,8 @@ class Game extends React.Component {
       stepNumber: step,
       xIsNext: (step % 2) === 0,
     });
+    Array.from(document.querySelectorAll('button')).forEach(b => b.classList.remove('green'))
+    document.querySelector('.game__status--message').classList.remove('green')
   }
 
   onClickMove = (id) => {
@@ -47,7 +49,7 @@ class Game extends React.Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-
+    const draw = checkForDraw(current.squares)
     const moves = history.map((step, move) => {
       const desc = move ?
         'Go to move #' + move :
@@ -66,6 +68,8 @@ class Game extends React.Component {
     if (winner) {
       status = <p className="green">Winner: {winner[0]}</p>;
       highlightWinningSquares(winner[1])
+    } else if (draw) {
+      status = <p className="yellow">Draw!</p>;
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
@@ -90,6 +94,14 @@ class Game extends React.Component {
 }
 
 export default Game;
+
+function checkForDraw(squares) {
+  if (squares.filter(s => s).length === 7) {
+    return true
+  } else {
+    return false
+  }
+}
 
 function calculateWinner(squares) {
   const lines = [
